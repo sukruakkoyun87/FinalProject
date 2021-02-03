@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -15,11 +16,11 @@ namespace DataAccess.Concrete.InMemory
         {
             _products = new List<Product>
             {
-                new Product {ProductId = 1, CategoryId = 1, ProductName = "Bardak", UnitInStock = 15, UnitPrice = 15},
-                new Product {ProductId = 2, CategoryId = 1, ProductName = "Kamera", UnitInStock = 3, UnitPrice = 500},
-                new Product {ProductId = 3, CategoryId = 2, ProductName = "Telefon", UnitInStock = 2, UnitPrice = 1500},
-                new Product {ProductId = 4, CategoryId = 2, ProductName = "Klavye", UnitInStock = 65, UnitPrice = 150},
-                new Product {ProductId = 5, CategoryId = 2, ProductName = "Fare", UnitInStock = 1, UnitPrice = 85},
+                new Product {ProductId = 1, CategoryId = 1, ProductName = "Bardak", UnitsInStock = 15, UnitPrice = 15},
+                new Product {ProductId = 2, CategoryId = 1, ProductName = "Kamera", UnitsInStock = 3, UnitPrice = 500},
+                new Product {ProductId = 3, CategoryId = 2, ProductName = "Telefon", UnitsInStock = 2, UnitPrice = 1500},
+                new Product {ProductId = 4, CategoryId = 2, ProductName = "Klavye", UnitsInStock = 65, UnitPrice = 150},
+                new Product {ProductId = 5, CategoryId = 2, ProductName = "Fare", UnitsInStock = 1, UnitPrice = 85},
 
             };
         }
@@ -50,9 +51,19 @@ namespace DataAccess.Concrete.InMemory
             productToUpdate.ProductName = product.ProductName;
             productToUpdate.CategoryId = product.CategoryId;
             productToUpdate.UnitPrice = product.UnitPrice;
-            productToUpdate.UnitInStock = product.UnitInStock;
+            productToUpdate.UnitsInStock = product.UnitsInStock;
             
             
+        }
+
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
     }
 }
