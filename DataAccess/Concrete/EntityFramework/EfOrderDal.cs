@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Text;
 using Core.DataAccess.EntityFrameworkF;
 using DataAccess.Abstract;
@@ -8,8 +7,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCustomerDal: EfEntityRespositoryBase<Customer, NorthwindContext>,ICustomerDal
+    public class EfOrderDal:EfEntityRespositoryBase<Order,NorthwindContext>,IOrderDal
     {
-      
     }
 }
