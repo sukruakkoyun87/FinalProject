@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Core.Utilities.Results;
 using Entities.Concrete;
 using Entities.DTOs;
 
@@ -12,6 +13,8 @@ namespace Business.Abstract
         List<Product> GetAllByCategoryId(int Id);
         List<Product> GetByUnitPirce(decimal min,decimal max);
         List<ProductDetailDto> GetProductDetails();
+        Product GetById(int productId);
+        IResult Add(Product product);
 
     }
 }
