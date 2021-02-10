@@ -13,8 +13,7 @@ namespace Business.Concrete
     public class ProductManager:IProductService
     {
         private IProductDal _productDal;
-        private IResult _result;
-
+        
         public ProductManager(IProductDal productDal)
         {
             _productDal = productDal;
