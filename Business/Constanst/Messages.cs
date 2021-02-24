@@ -14,5 +14,8 @@ namespace Business.Constanst
 
         public static string ProductsListed = "Ürünler Listelendi";
 
+        public  static string ProductCountOfCategoryError="Bir Kategoriden en fazla 10 adet olmalıdır";
+
+        public static string CategoryLimitExtended = "Kategori Limiti Aşıldı";
     }
 }

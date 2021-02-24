@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net.Http.Headers;
+
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
@@ -22,7 +23,7 @@ namespace ConsoleUI
         {
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
 
-            foreach (var category in categoryManager.GetAll())
+            foreach (var category in categoryManager.GetAll().Data)
             {
                 Console.WriteLine("Categori Adı : {0}", category.CategoryName);
             }
@@ -30,7 +31,7 @@ namespace ConsoleUI
 
         private static void ProductTest()
         {
-            ProductManager productManager = new ProductManager(new EfProductDal());
+            ProductManager productManager = new ProductManager(new EfProductDal(),new CategoryManager(new EfCategoryDal()));
 
             var result = productManager.GetProductDetails();
 
