@@ -9,6 +9,7 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using Business.BusinessAspects.Autofac;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Microsoft.EntityFrameworkCore.Internal;
@@ -28,6 +29,7 @@ namespace Business.Concrete
 
         }
 
+        [CacheAspect]
         public IDataResult<Product> GetById(int productId)
         {
             return new SuccessDataResult<Product>(_productDal.Get(p => p.ProductId == productId));
@@ -36,6 +38,7 @@ namespace Business.Concrete
 
         [SecuredOperation("product.add,Admin")]
         [ValidationAspect(typeof(ProductValidator))]
+        [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Product product)
         {
             IResult result = BusinessRules.Run(CheckIfProductCountCategoryCorrect(product.CategoryId),
@@ -53,6 +56,8 @@ namespace Business.Concrete
 
         }
 
+        [ValidationAspect(typeof(ProductValidator))]
+        [CacheRemoveAspect("IProductService.Get")]
         public IResult Update(Product product)
         {
             throw new NotImplementedException();
@@ -93,7 +98,7 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-
+        [CacheAspect]
         public IDataResult<List<Product>> GetAll()
         {
             if (DateTime.Now.Hour == 23)
