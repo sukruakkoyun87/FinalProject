@@ -76,7 +76,7 @@ namespace Business.Concrete
             var result = _productDal.GetAll(p => p.ProductName == productName).Any();
             if (result)
             {
-                return new ErrorResult();
+                return new ErrorResult(Messages.ProductCountOfCategoryError);
             }
 
             return new SuccessResult();

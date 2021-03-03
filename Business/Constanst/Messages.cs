@@ -27,5 +27,7 @@ namespace Business.Constanst
         public static string UserAlreadyExists = "Bu kullanıcı zaten mevcut";
         public static string UserRegistered = "Kullanıcı başarıyla kaydedildi";
         public static string AccessTokenCreated = "Access token başarıyla oluşturuldu";
+
+        public static string ProductNameAlreadyExists = "Bu isimde zaten başka bir ürün var";
     }
 }
